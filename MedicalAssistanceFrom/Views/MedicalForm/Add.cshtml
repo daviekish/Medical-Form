@@ -1,0 +1,267 @@
+﻿@model Domain_Layer.Models.medicalFromViewModel
+@{
+    ViewData["Title"] = "Signature Input";
+}
+
+
+<h1>Medical Assistance form</h1>
+<br />
+
+<form method="post" action="Add" >
+    <h3>Enter Your Details</h3>
+    <div class="row g-3">
+
+        <div class="col-md-4">
+            <label for="" class="form-label">First Name</label>
+            <input type="text" class="form-control" asp-for="FirstName">
+        </div>
+        <div class="col-md-4">
+            <label for="" class="form-label">Second Name</label>
+            <input type="text" class="form-control" asp-for="SecondName">
+        </div>
+        <div class="col-md-4">
+            <label for="" class="form-label">Last Name</label>
+            <input type="text" class="form-control" asp-for="LastName">
+        </div>
+    </div>
+    <br/>
+    <div class="row g-3">
+        <div class="col-md-4">
+            <label for="" class="form-label">Enter Id/Passport No</label>
+            <input type="number" class="form-control" asp-for="IDNo">
+        </div>
+
+        <div class="col-md-4">
+            <label for="" class="form-label">Enter Phone No</label>
+            <input type="text" class="form-control" asp-for="TelPhone">
+        </div>
+
+        <div class="col-md-4">
+            <label for="" class="form-label">Enter Email</label>
+            <input type="email" class="form-control" asp-for="Email">
+        </div>
+        <div class="col-md-6">
+            <label for="" class="form-label">PoBox No.</label>
+            <input type="number" class="form-control" asp-for="PoBoxNo">
+        </div>
+        <div class="col-md-6">
+            <label for="" class="form-label">Town Of Residency</label>
+            <input type="text" class="form-control" asp-for="Town">
+        </div>
+    </div>
+    
+    <br />
+    <h3>Enter Patient Representative Details</h3>
+    <br />
+    <div class="row g-3">
+        <div class="col-md-4">
+            <label for="" class="form-label"> Name</label>
+            <input type="text" class="form-control" asp-for="PatientRepName">
+        </div>
+        <div class="col-md-4">
+            <label for="" class="form-label"> Phone No.</label>
+            <input type="number" class="form-control" asp-for="PatientRepPhone">
+        </div>
+        <div class="col-md-4">
+            <label for="" class="form-label"> Relationship</label>
+            <input type="text" class="form-control" asp-for="Relation">
+        </div>
+    </div>
+    <br />
+    <h3>Other information</h3>
+    <br />
+    <div class="row g-3">
+        <div class="col-md-4">
+            <label for="" class="form-label"> Nature of Illness</label>
+            <input type="text" class="form-control" asp-for="NatureOfillness">
+        </div>
+        <div class="col-md-4">
+            <label for="" class="form-label"> Hospital Name</label>
+            <input type="text" class="form-control" asp-for="HospitalName">
+        </div>
+        <div class="col-md-4">
+            <label for="" class="form-label"> County of Residence</label>
+            <input type="text" class="form-control" asp-for="County">
+        </div>
+    </div>
+    <br />
+    <h3>Medical Attachments</h3>
+    <br />
+
+    <div >
+        
+        <label for="IsBill" class="form-label"> Bills </label>
+        <input type="radio" name="MedicalAttachment" asp-for="MedicalAttachmentDetails" value="Bill" id="IsBill">
+    </div>
+    <div class="mb-3">
+        <label for="IsmedicalCorrespondence" class="form-label">Medical Correspondence </label>
+        <input type="radio" name="MedicalAttachment" asp-for="MedicalAttachmentDetails" value="Medical Correspondence" Id="IsMedicalCorrespondence">
+    </div>
+    
+    <div class="mb-3">
+        <label for="IsDoctorsLetter" class="form-label"> Doctors Letter</label>
+        <input type="radio" name="MedicalAttachment" asp-for="MedicalAttachmentDetails" value="Doctors Letter" id="IsDoctorsLetter">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label"> Others</label>
+        <input type="radio" name="MedicalAttachment" asp-for="MedicalAttachmentDetails" value="Others" id="IsOthers">
+    </div>
+
+    <div class="mb-3">
+        <label for="DocumentFile"> Medical Attachment:</label>
+        <br/>
+        <br />
+        <input type="file"  name="MedicalAttachments">
+    </div>
+    <br />
+    @*<div class="mb-3">
+        <label for="" class="form-label"> Patient Name</label>
+        <input type="text" class="form-control" asp-for="HospitalAttachmentFileName">
+    </div>*@
+    <br />
+    <h3>Payment information</h3> 
+    <br />
+    <div class="mb-3">
+        <label for="" class="form-label"> Family Contribution</label>
+        <input type="number" class="form-control" asp-for="FamilyContribution">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label"> Amount paid by NHIF</label>
+        <input type="number" class="form-control" asp-for="NHIFcontribution">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label"> Hospital Balance</label>
+        <input type="number" class="form-control" asp-for="HospitalBillBalance">
+    </div>
+    <br />
+    <h3>If Revertee, attach certification information</h3>
+    <br />
+
+    <div class="mb-3">
+        <label for="" class="form-label"> Yes</label>
+        <input type="radio"  asp-for="IsRevertee" value="True" id="Revertee">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label"> No</label>
+        <input type="radio"  asp-for="IsRevertee" value="False" id="Not revertee">
+    </div>
+    <div class="mb-3">
+        <label for="DocumentFile" > Attach Revertee info</label>
+        <br />
+        <br />
+        <input type="file"  name="ReverteeCertificate">
+    </div>
+    <br />
+    @*<div class="mb-3">
+        <label for="" class="form-label"> Revertee Name</label>
+        <input type="text" class="form-control" asp-for="ReverteeCertificateFileName">
+    </div>*@
+    <br />
+
+    <div class="mb-3">
+        <label for="" class="form-label"> Additional information </label>
+        <textarea type="text" class="form-control" asp-for="AdditionalInfo"></textarea>
+    </div>
+    <br />
+    
+    <h3>Traveling Details Overseas Attachment </h3>
+    <br />
+    <div class="mb-3">
+        <label for="" class="form-label"> Passport</label>
+        <input type="radio" asp-for="TransportDocument" value="Passport" for="1">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label"> Ticket</label>
+        <input type="radio" asp-for="TransportDocument" value="Ticket" for="2">
+
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label"> VISA</label>
+        <input type="radio" asp-for="TransportDocument" value="VISA" for="3">
+    </div>
+    <div>
+    <label for="DocumentFile"> Travel Documents attachment: </label>
+        <br/>
+        <br/>
+    <input type="file"  name="TravellingAttachment">
+    </div>
+    <br />
+    @*<div class="mb-3">
+        <label for="" class="form-label"> User Name</label>
+        <input type="text" class="form-control" asp-for="TravellingAttachmentFileName">
+    </div>*@
+    <br />
+    <br />
+    <h3>For Overseas Hospital Treatment</h3>
+    <br />
+    <div class="row g-3">
+        <div class="col-md-4">
+            <label for="" class="form-label"> Hospital Name</label>
+            <input type="text" class="form-control" asp-for="OverSeasHospitalName">
+        </div>
+        <div class="col-md-4">
+            <label for="" class="form-label"> County of Residence</label>
+            <input type="text" class="form-control" asp-for="OverSeaCountry">
+        </div>
+        <br/>
+        <br />
+        <div class="mb-3">
+            <label for="DocumentFile"> Hospital Documenatation: </label>
+            <br />
+            <br/>
+            <input type="file" asp-for="OverSeaHospitalDocument">
+        </div>
+        <br />
+        @*<div class="mb-3">
+            <label for="" class="form-label"> Hospital Name</label>
+            <input type="text" class="form-control" asp-for="HospitalAttachmentFileName">
+        </div>*@
+    </div>
+    <br />
+    <br />
+    <h3>Verification</h3>
+    <br />
+    <div class="row g-3">
+        <div class="col-md-6">
+            <label for="" class="form-label">Date</label>
+            <input type="date" class="form-control" asp-for="Date">
+        </div>
+        @* <div class="col-md-3">
+        <label for="" class="form-label"> ID</label>
+        <input type="number" class="form-control" asp-for="Signature">
+        </div>*@
+        <div class="mb-6">
+            <label for="" class="form-label">Signature</label>
+            <br />
+            <br/>
+
+            <canvas id="signatureCanvas" width="400" height="200" style="border: 1px solid #000;"></canvas>
+            <button id="clearButton">Clear Signature</button>
+            
+            <input type="hidden" id="signatureData" name="signatureData" asp-for="Signature"/>    
+            
+        </div>
+
+    </div>
+    <br/>
+    <br />
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+  
+</form>
+
+@section Scripts {
+    <script>
+        var signaturePad = new SignaturePad(document.getElementById('signatureCanvas'));
+
+        document.getElementById('clearButton').addEventListener('click', function () {
+            signaturePad.clear();
+        });
+
+        document.querySelector('form').addEventListener('submit', function (event){
+            var dataUrl = signaturePad.toDataURL();
+            document.getElementById('signatureData').ariaValueMax = dataUrl;
+        });
+    </script>
+    
+    }
