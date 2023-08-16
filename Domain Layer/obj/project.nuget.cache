@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g/W6+xWTOyJPM0E2nSbsdi30I0Q9uq1FPUSKquJ0CXyMmb0Qc11Oe6u3KCvVdUJ58ZQa1pXGe4GdI9uDnCBxdw==",
+  "dgSpecHash": "BOdKRwpXJiykopG8KcH9AcdkhgFKN/HxUsTTGuyB1HftYRcS1MOh8jf5bqwMwICo3uaU6CH3TGIaBkcOrJOoCA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\Documents\\David\\Spassys\\LOAN APPLICATION\\Medical Form\\Domain Layer\\Domain Layer.csproj",
+  "projectFilePath": "C:\\Users\\HP\\Documents\\David\\Spassys\\loanApplication\\Medical Form\\Domain Layer\\Domain Layer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

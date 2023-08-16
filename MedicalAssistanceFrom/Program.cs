@@ -13,12 +13,17 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<MedicalFormDbContext>();
 builder.Services.AddScoped<MedicalFromModel>();
+builder.Services.AddScoped<Files>();
 
 builder.Services.AddDbContext<MedicalFormDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IUserService<MedicalFromModel>, UserService<MedicalFromModel>>();
 
 builder.Services.AddScoped<IRepository<MedicalFromModel>, Repository<MedicalFromModel>>();
+
+builder.Services.AddScoped<IFilesService<Files>, FilesService<Files>>();
+
+builder.Services.AddScoped<IRepository<Files>, Repository<Files>>();
 
 var app = builder.Build();
 

@@ -49,7 +49,7 @@ namespace Domain_Layer.Models
 
         // medical attachments
         [Required]
-        public byte[] MedicalAttachments { get; set; }
+       
 
         public string MedicalAttachmentFileName { get; set; }
 
@@ -64,7 +64,8 @@ namespace Domain_Layer.Models
 
         // Revertee certificate attachments
         [Required]
-        public byte[] ReverteeCertificate { get; set; }
+       
+
         public string ReverteeCertificateFileName { get; set; }
 
         public string AdditionalInfo { get; set; }
@@ -74,7 +75,8 @@ namespace Domain_Layer.Models
 
         //Traveeling  attachements
         [Required]
-        public byte[] TravellingAttachment { get; set; }
+      
+
         public string TravellingAttachmentFileName { get; set; }
 
         public string OverSeasHospitalName { get;set; }
@@ -83,14 +85,14 @@ namespace Domain_Layer.Models
 
 
         //Oversea doc attachements
-        [Required]
-        public byte[] OverSeaHospitalDocument { get; set; }
+       
+
         public string HospitalAttachmentFileName { get; set; }
 
         public DateTime Date { get; set; }
 
 
-        [Required]
-        public string Signature { get; set; }
+
+       
     }
 }

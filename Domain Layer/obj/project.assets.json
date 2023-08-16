@@ -3592,11 +3592,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\HP\\Documents\\David\\Spassys\\LOAN APPLICATION\\Medical Form\\Domain Layer\\Domain Layer.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\Documents\\David\\Spassys\\loanApplication\\Medical Form\\Domain Layer\\Domain Layer.csproj",
       "projectName": "Domain Layer",
-      "projectPath": "C:\\Users\\HP\\Documents\\David\\Spassys\\LOAN APPLICATION\\Medical Form\\Domain Layer\\Domain Layer.csproj",
+      "projectPath": "C:\\Users\\HP\\Documents\\David\\Spassys\\loanApplication\\Medical Form\\Domain Layer\\Domain Layer.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\HP\\Documents\\David\\Spassys\\LOAN APPLICATION\\Medical Form\\Domain Layer\\obj\\",
+      "outputPath": "C:\\Users\\HP\\Documents\\David\\Spassys\\loanApplication\\Medical Form\\Domain Layer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

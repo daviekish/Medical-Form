@@ -10,6 +10,7 @@ namespace Domain_Layer.Models
 {
     public class medicalFromViewModel
     {
+
         [Required]
         public string FirstName { get; set; }
 
@@ -24,7 +25,7 @@ namespace Domain_Layer.Models
         [Required]
         public string Email { get; set; }
 
-        [Required]  
+        [Required]
         public string TelPhone { get; set; }
 
         public string PoBoxNo { get; set; }
@@ -48,8 +49,6 @@ namespace Domain_Layer.Models
 
         // medical attachments
         [Required]
-        public byte[] MedicalAttachments { get; set; }
-
         public string MedicalAttachmentFileName { get; set; }
 
         public double FamilyContribution { get; set; }
@@ -63,7 +62,8 @@ namespace Domain_Layer.Models
 
         // Revertee certificate attachments
         [Required]
-        public byte[] ReverteeCertificate { get; set; }
+
+
         public string ReverteeCertificateFileName { get; set; }
 
         public string AdditionalInfo { get; set; }
@@ -73,21 +73,28 @@ namespace Domain_Layer.Models
 
         //Traveeling  attachements
         [Required]
-        public byte[] TravellingAttachment { get; set; }
+
+
         public string TravellingAttachmentFileName { get; set; }
 
         public string OverSeasHospitalName { get; set; }
 
         public string OverSeaCountry { get; set; }
 
+
         //Oversea doc attachements
-        [Required]
-        public byte[] OverSeaHospitalDocument { get; set; }
+
+
         public string HospitalAttachmentFileName { get; set; }
 
         public DateTime Date { get; set; }
 
-        [Required]
         public string Signature { get; set; }
-    }
+
+        public List<MedicalFromModel> MedicalFrom { get; set; }
+        public List<Files> dataFiles { get; set; }
+
+       
+
+    }      
 }

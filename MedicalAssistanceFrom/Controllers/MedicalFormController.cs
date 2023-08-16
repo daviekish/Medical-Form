@@ -1,7 +1,9 @@
 ﻿using Domain_Layer.Data;
 using Domain_Layer.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using System.Security.Cryptography.Xml;
+using System;
 
 namespace MedicalAssistanceFrom.Controllers
 {
@@ -16,7 +18,7 @@ namespace MedicalAssistanceFrom.Controllers
             this.medicalForm = medicalForm;
         }
 
-        [HttpGet]
+
         public IActionResult Add()
 
         {
@@ -24,53 +26,58 @@ namespace MedicalAssistanceFrom.Controllers
             return View(viewModel);
         }
 
+
         [HttpPost]
-        public async Task<IActionResult> Add(medicalFromViewModel model, List<IFormFile> files) 
+        public async Task<IActionResult> Add(medicalFromViewModel model, List<IFormFile> files, Files attachment)
         {
-
-
-
-
 
             foreach (var file in files)
             {
-                using (var target = new MemoryStream())
+                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                var fileModel = new Files
                 {
-                    file.CopyTo(target);
+                    createdDate = DateTime.Now,
+                    Signature = model.Signature
+                                        
+                };
 
-                    if (file.Name == "MedicalAttachments")
-                    {
-                        model.MedicalAttachments = target.ToArray();
-                        model.MedicalAttachmentFileName = model.MedicalAttachmentDetails;
-                        model.MedicalAttachmentFileName = file.FileName;
-                    }
-                    else if (file.Name == "TravellingAttachment")
-                    {
-                        model.TravellingAttachment = target.ToArray();
-                        model.TravellingAttachmentFileName = model.TransportDocument;
-                        model.TravellingAttachmentFileName = file.FileName;
-                    }
-                    else if (file.Name == "OverSeaHospitalDocument")
-                    {
-                        model.OverSeaHospitalDocument = target.ToArray();
-                        model.OverSeasHospitalName = model.OverSeasHospitalName;
-                        model.OverSeasHospitalName = file.FileName;
-                    }
-                    else if (file.Name == "ReverteeCertificate")
-                    {
-                        model.ReverteeCertificate = target.ToArray();
-                        model.ReverteeCertificateFileName = model.IsRevertee.ToString();
-                        model.ReverteeCertificateFileName = file.FileName;
-                    }
+                using (var dataStream = new MemoryStream())
+                {
+                    await dataStream.CopyToAsync(dataStream);
+                    fileModel.MedicalAttachments = dataStream.ToArray();
+                    model.MedicalAttachmentFileName = fileName;
                 }
 
-                model.Signature = Convert.ToBase64String(ConvertDataUrlToByteArray(model.Signature));
+                using (var dataStream = new MemoryStream())
+                {
+                    await dataStream.CopyToAsync(dataStream);
+                    fileModel.ReverteeCertificate= dataStream.ToArray();
+                    model.ReverteeCertificateFileName = fileName;
+                }
 
+                using (var memoryStream = new MemoryStream())
+                {
+                    await memoryStream.CopyToAsync(memoryStream);
+                    fileModel.TravellingAttachment = memoryStream.ToArray();
+                    model.ReverteeCertificateFileName = fileName;
+                }
 
-                var newForm = new MedicalFromModel()
+                using (var memoryStream = new MemoryStream())
+                {
+                    await memoryStream.CopyToAsync(memoryStream);
+                    fileModel.OverSeaHospitalDocument = memoryStream.ToArray();
+                    model.HospitalAttachmentFileName = fileName;
+                }
+               
+                await medicalFormDbContext.MedicalFrom.AddAsync(fileModel);
+            }
+
+            attachment.Signature = Convert.ToBase64String(ConvertDataUrlToByteArray(attachment.Signature));
+
+            var newForm = new MedicalFromModel()
                 {
                     FirstName = model.FirstName,
-                    SecondName = model.LastName,
+                    SecondName = model.SecondName,
                     LastName = model.LastName,
                     IDNo = model.IDNo,
                     Email = model.Email,
@@ -80,68 +87,69 @@ namespace MedicalAssistanceFrom.Controllers
                     PatientRepName = model.PatientRepName,
                     PatientRepPhone = model.PatientRepPhone,
                     Relation = model.Relation,
-                    NatureOfillness = model.NatureOfillness,                    HospitalName = model.HospitalName,
+                    NatureOfillness = model.NatureOfillness,
+                    HospitalName = model.HospitalName,
                     County = model.County,
                     MedicalAttachmentDetails = model.MedicalAttachmentDetails,
+                    MedicalAttachmentFileName = model.MedicalAttachmentFileName,
                     FamilyContribution = model.FamilyContribution,
                     NHIFcontribution = model.NHIFcontribution,
                     HospitalBillBalance = model.HospitalBillBalance,
                     IsRevertee = model.IsRevertee,
+                    ReverteeCertificateFileName = model.ReverteeCertificateFileName,
                     AdditionalInfo = model.AdditionalInfo,
-                    TransportDocument = model.TransportDocument,
+                    TransportDocument = model.AdditionalInfo,
+                    TravellingAttachmentFileName = model.TravellingAttachmentFileName,
                     OverSeasHospitalName = model.OverSeasHospitalName,
                     OverSeaCountry = model.OverSeaCountry,
-                    Date = model.Date,
+                    HospitalAttachmentFileName = model.HospitalAttachmentFileName,
+                    Date = DateTime.Now,
                     createdDate = DateTime.Now,
                     modfiedDate = DateTime.Now,
-                    MedicalAttachments = model.MedicalAttachments,
-                    ReverteeCertificate = model.ReverteeCertificate,
-                    TravellingAttachment= model.TravellingAttachment,
-                    OverSeaHospitalDocument= model.OverSeaHospitalDocument,
-                    MedicalAttachmentFileName = model.MedicalAttachmentFileName,
-                    TravellingAttachmentFileName = model.TravellingAttachmentFileName,
-                    HospitalAttachmentFileName = model.MedicalAttachmentFileName,
-                    ReverteeCertificateFileName = model.ReverteeCertificateFileName,
-                    Signature = model.Signature,
-
                 };
-
-
-                //using (var target2 = new MemoryStream())
-                //{
-                //    file.CopyTo(target2);
-                //    newForm.TravellingAttachment = target2.ToArray();
-                //}
-
-                //using (var target3 = new MemoryStream())
-                //{
-                //    files.CopyTo(target3);
-                //    newForm.OverSeaHospitalDocument = target3.ToArray();
-                //}
-
-
-                //using (var target4 = new MemoryStream())
-                //{
-                //    files.CopyTo(target4);
-                //    newForm.ReverteeCertificate = target4.ToArray();
-                //}
-
+     
                 await medicalFormDbContext.MedicalFrom.AddAsync(newForm);
                 await medicalFormDbContext.SaveChangesAsync();
-               
-            }
+
+
+            
 
             return View(model);
 
-           
         }
+
+        //private void SaveAttachment (IFormFile file, ref byte[] target)
+        //{   
+        //        using (var memoryStream = new MemoryStream())
+        //        {
+        //            file.CopyTo(memoryStream);
+        //             target = memoryStream.ToArray();
+        //        }
+            
+        //}
+
+
         private byte[] ConvertDataUrlToByteArray(string dataUrl)
         {
-            var base64Data = dataUrl.Split(',')[1];
+            if (string.IsNullOrEmpty(dataUrl))
+            {
+                throw new ArgumentException(nameof(dataUrl), "dataUrl cannot be null or empty");
+
+            }
+
+            var dataParts = dataUrl.Split(',');
+
+            if (dataParts.Length < 2 )
+            {
+                throw new ArgumentException("Invalid dataUrl format.", nameof(dataUrl));
+            }
+             var base64Data = dataUrl.Split(',')[1];
+
             return Convert.FromBase64String(base64Data);
         }
 
+       
 
+    }
+};
 
-    };
-}

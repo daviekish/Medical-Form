@@ -17,6 +17,7 @@ namespace Domain_Layer.Data
         }
 
         public DbSet<MedicalFromModel> MedicalFrom { get; set; }
+        public DbSet<Files> DataFiles { get; set; }
 
         
     }

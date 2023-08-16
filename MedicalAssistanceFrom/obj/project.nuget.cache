@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "atfpT4QDUwo43iJgQjMksSOpC73cE3Dgrjd36Hwt+I50XkhKm/kqqqWxXGArdvtxjkOarFGstHq4XSHwQybs/A==",
+  "dgSpecHash": "3LCOJTDc1L+jXBK0fbEHsjo7LBaypjEDlA5dzyW3K+J8hfX9bkgMquvlnCeyMbY0iSk/PYgyc8YkHEKGlgTYLQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\HP\\Documents\\David\\Spassys\\LOAN APPLICATION\\Medical Form\\MedicalAssistanceFrom\\WebForm.csproj",
+  "projectFilePath": "C:\\Users\\HP\\Documents\\David\\Spassys\\loanApplication\\Medical Form\\MedicalAssistanceFrom\\WebForm.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

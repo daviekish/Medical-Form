@@ -111,7 +111,7 @@
         <label for="DocumentFile"> Medical Attachment:</label>
         <br/>
         <br />
-        <input type="file"  name="MedicalAttachments">
+        <input type="file"  name="MedicalAttachments" asp-for="dataFiles">
     </div>
     <br />
     @*<div class="mb-3">
@@ -149,7 +149,7 @@
         <label for="DocumentFile" > Attach Revertee info</label>
         <br />
         <br />
-        <input type="file"  name="ReverteeCertificate">
+        <input type="file" name="ReverteeCertificate" asp-for="dataFiles">
     </div>
     <br />
     @*<div class="mb-3">
@@ -183,7 +183,7 @@
     <label for="DocumentFile"> Travel Documents attachment: </label>
         <br/>
         <br/>
-    <input type="file"  name="TravellingAttachment">
+        <input type="file" name="TravellingAttachment" asp-for="dataFiles">
     </div>
     <br />
     @*<div class="mb-3">
@@ -209,7 +209,7 @@
             <label for="DocumentFile"> Hospital Documenatation: </label>
             <br />
             <br/>
-            <input type="file" asp-for="OverSeaHospitalDocument">
+            <input type="file" asp-for="dataFiles">
         </div>
         <br />
         @*<div class="mb-3">

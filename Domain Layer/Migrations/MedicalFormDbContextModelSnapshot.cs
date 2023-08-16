@@ -41,6 +41,10 @@ namespace Domain_Layer.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -81,10 +85,6 @@ namespace Domain_Layer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("MedicalAttachments")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<double>("NHIFcontribution")
                         .HasColumnType("float");
 
@@ -95,10 +95,6 @@ namespace Domain_Layer.Migrations
                     b.Property<string>("OverSeaCountry")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<byte[]>("OverSeaHospitalDocument")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("OverSeasHospitalName")
                         .IsRequired()
@@ -120,19 +116,11 @@ namespace Domain_Layer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("ReverteeCertificate")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<string>("ReverteeCertificateFileName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecondName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Signature")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -148,10 +136,6 @@ namespace Domain_Layer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("TravellingAttachment")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<string>("TravellingAttachmentFileName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -165,6 +149,37 @@ namespace Domain_Layer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MedicalFrom");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("MedicalFromModel");
+
+                    b.UseTphMappingStrategy();
+                });
+
+            modelBuilder.Entity("Domain_Layer.Models.Files", b =>
+                {
+                    b.HasBaseType("Domain_Layer.Models.MedicalFromModel");
+
+                    b.Property<byte[]>("MedicalAttachments")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("OverSeaHospitalDocument")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("ReverteeCertificate")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Signature")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("TravellingAttachment")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasDiscriminator().HasValue("Files");
                 });
 #pragma warning restore 612, 618
         }
